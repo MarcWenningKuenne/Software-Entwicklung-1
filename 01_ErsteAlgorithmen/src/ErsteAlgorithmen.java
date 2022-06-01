@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 import org.junit.jupiter.params.aggregator.ArgumentAccessException;
 
 public class ErsteAlgorithmen {
@@ -54,7 +53,23 @@ public class ErsteAlgorithmen {
     
     public static double quadratwurzel(double x, double eps) {
         //Bitte hier die Loesung ergaenzen
-        return 0.0;
+        double yn = x/2;
+        double ynminus1 = 0;
+        double bedingung = yn - ynminus1;
+
+        while(machePositiv(bedingung) > eps){
+            ynminus1 = yn;
+            yn = (ynminus1 + (x / ynminus1)) / 2;
+            bedingung = yn - ynminus1;
+        }
+        return yn;
+    }
+
+    public static double machePositiv(double x){
+        if(x < 0){
+            x = x * (-1);
+        }
+        return x;
     }
         
 }
